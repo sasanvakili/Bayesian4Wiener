@@ -1,0 +1,28 @@
+# MATLAB autosave files
+*.asv
+*.m~
+
+# Compiled MEX binaries
+*.mex*
+
+# Simulink code generation files
+slprj/
+.autosave
+
+# MATLAB workspace and session info
+octave-workspace
+
+# Temporary files
+*.tmp
+*.log
+temp/
+
+# Backup files
+*.bak
+
+# System-specific files
+.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride
+._*
