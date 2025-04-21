@@ -134,6 +134,8 @@ The `Bayesian4Wiener` library has three modes of operation:
 
 ## Usage
 
+### Inputs
+
 The `Bayesian4Wiener` library takes the following three major inputs:
 
 *   **`model`**: This struct contains the following model parameters:
@@ -175,7 +177,7 @@ The `Bayesian4Wiener` library takes the following three major inputs:
 
 *   **`vecYbar`**: The vector of measurements, i.e., $\overline{\mathrm{y}} = \[ \mathrm{y} _{0}, \ldots, \mathrm{y} _{T} \] ^{\mathsf{T}}$. This is required **ONLY** if the mode is set to `estimateTheta`; otherwise, it can be left empty (i.e., `vecYbar = []`).
 
-## Outputs
+### Outputs
 
 The `Bayesian4Wiener` library returns the following outputs, depending on the chosen mode of operation:
 
@@ -201,6 +203,8 @@ The `Bayesian4Wiener` library returns the following outputs, depending on the ch
 *   **`optimalUbar`**: The vector of the optimal input $\overline{\mathrm{u}} ^{\star}$. This is returned **ONLY** if the mode is set to `activeLearning`.
 
 *   **`thetaEstimate`**: The vector of theta estimates $\hat{\theta} _{\mathrm{B}}( \overline{\mathrm{y}} )$. This is returned **ONLY** if the mode is set to `estimateTheta`.
+
+### Examples
 
 Examples for using each of the operation modes and setting various inputs are provided in the file `example.m` under the folder `example`. This example provides a comprehensive introduction to setting up and testing the `Bayesian4Wiener` library.
 
