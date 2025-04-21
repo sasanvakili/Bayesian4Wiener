@@ -1,0 +1,56 @@
+function [sigmaPhi, muPhi] = fourierDBS(numTheta, allVecFreq, matrixAi, ...
+    vecBbarUbar, sigmaWbar, matrixAj)
+% This function computes the Fourier "Dynamic basis statistics" (DBS) explicit 
+% expression defined in Lemma 4.1 of Section 4 from the paper:
+%   "Optimal Bayesian Affine Estimator and Active Learning for the Wiener Model".
+%
+% This computation is critical for implementing the proposed optimal Bayesian estimator.
+%
+% Paper: https://arxiv.org/abs/2504.05490
+% Requirements: Bayesian4Wiener library (see README for details)
+% ----------------------------------------------------------------------------------
+% @author: Sasan Vakili
+% @date: April 2025
+
+sigmaPhi = zeros(numTheta, numTheta);
+for m=1:numTheta-1
+    mFreq = allVecFreq(:, m);
+    for n=1:numTheta-1
+        nFreq = allVecFreq(:, n);
+        term14 = (exp(1i*((mFreq')*matrixAi+(nFreq')*matrixAj)*...
+            vecBbarUbar)+exp(-1i*((mFreq')*matrixAi+(nFreq')*matrixAj)*...
+            vecBbarUbar))*(exp(-(1/2)*((mFreq')*matrixAi+...
+            (nFreq')*matrixAj)*sigmaWbar*((matrixAi')*mFreq+...
+            (matrixAj')*nFreq))-exp(-(1/2)*(mFreq')*matrixAi*...
+            sigmaWbar*(matrixAi')*mFreq)*exp(-(1/2)*(nFreq')*matrixAj*...
+            sigmaWbar*(matrixAj')*nFreq));
+        term23 = (exp(1i*((mFreq')*matrixAi-(nFreq')*matrixAj)*...
+            vecBbarUbar)+exp(-1i*((mFreq')*matrixAi-(nFreq')*matrixAj)*...
+            vecBbarUbar))*(exp(-(1/2)*((mFreq')*matrixAi-...
+            (nFreq')*matrixAj)*sigmaWbar*((matrixAi')*mFreq-...
+            (matrixAj')*nFreq))-exp(-(1/2)*(mFreq')*matrixAi*...
+            sigmaWbar*(matrixAi')*mFreq)*exp(-(1/2)*(nFreq')*matrixAj...
+            *sigmaWbar*(matrixAj')*nFreq));
+        sigmaPhi(m+1, n+1) = term14+term23;
+    end
+end
+
+if any(abs(imag(sigmaPhi)) >= 1e-6)
+    error(['sigmaPhi has non-negligible imaginary parts ' ...
+        '(max abs(imag): %.2e)'], max(abs(imag(sigmaPhi))));
+end
+sigmaPhi = real(sigmaPhi);
+
+if (nargout > 1)
+    muPhi = zeros(numTheta, 1);
+    muPhi(1) = 1;
+    muPhi(2:end) = (exp(1i*(allVecFreq')*matrixAi*vecBbarUbar)+ ...
+        exp(-1i*(allVecFreq')*matrixAi*vecBbarUbar)).*...
+        exp(-(1/2)*diag((allVecFreq')*matrixAi*sigmaWbar*(matrixAi')*allVecFreq));
+    if any(abs(imag(muPhi)) >= 1e-6)
+        error(['muPhi has non-negligible imaginary parts ' ...
+            '(max abs(imag): %.2e)'], max(abs(imag(muPhi))));
+    end
+    muPhi = real(muPhi);
+end
+end
