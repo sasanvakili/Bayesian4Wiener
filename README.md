@@ -134,6 +134,12 @@ The `Bayesian4Wiener` library has three modes of operation:
 
 ## Usage
 
+The `Bayesian4Wiener` library can be invoked using the following command in MATLAB:
+
+`[estimator, optimizer, optimalUbar, thetaEstimate] = Bayesian4Wiener(model, settings, vecYbar);`
+
+Ensure that the inputs are defined according to the descriptions below.
+
 ### Inputs
 
 The `Bayesian4Wiener` library takes the following three major inputs:
