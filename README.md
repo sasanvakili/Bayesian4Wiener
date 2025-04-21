@@ -218,7 +218,7 @@ Examples for using each of the operation modes and setting various inputs are pr
 
 If you use the `Bayesian4Wiener` library for research, please cite our accompanying paper:
 
-```
+```bibtex
 @article{vakili2025optimal,
   title={Optimal Bayesian Affine Estimator and Active Learning for the Wiener Model},
   author={Vakili, Sasan and Mazo Jr, Manuel and Mohajerin Esfahani, Peyman},
