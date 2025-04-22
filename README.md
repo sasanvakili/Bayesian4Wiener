@@ -116,7 +116,7 @@ For more information and a detailed explanation, refer to our paper: [Optimal Ba
 
 The `Bayesian4Wiener` library is currently available **only** in MATLAB and has no other dependencies:
 
-*   **Core Dependency**: MATLAB (R2020a or newer recommended)
+*   **Core Dependency**: MATLAB (R2020b or newer recommended)
 *   **Optional**: MATLAB Parallel Computing Toolbox
     *   Invoke `ver('parallel')` in the MATLAB terminal command window to check its installation.
     *   Enables parallel execution of `parfor` loops for accelerated computation.
