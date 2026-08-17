@@ -138,7 +138,7 @@ The `Bayesian4Wiener` library can be invoked in MATLAB using the following comma
 
 `[estimator, optimizer, optimalUbar, thetaEstimate] = Bayesian4Wiener(model, settings, vecYbar);`
 
-Ensure that the the library's `src` folder is added to MATLAB's path (e.g., `addpath('./src')`), and the inputs are configured according to the descriptions below.
+Ensure that the library's `src` folder is added to MATLAB's path (e.g., `addpath('./src')`), and the inputs are configured according to the descriptions below.
 
 ### Inputs
 
