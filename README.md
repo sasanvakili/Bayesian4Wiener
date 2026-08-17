@@ -10,7 +10,7 @@ $$
 $$
 
 where
-*   $t = \\{ 0, \\ldots, T \\}$
+*   $t \in \\{ 0, \\ldots, T \\}$
 *   $\mathrm{x} _{t} \in \mathbb{R} ^{n _{\mathrm{x}}}$ is the state vector.
 *   $\mathrm{A} _{t} \in \mathbb{R} ^{n _{\mathrm{x}} \times n _{\mathrm{x}} }$ is the state transition matrix.
 *   $\mathrm{B} _{t} \in \mathbb{R} ^{n _{\mathrm{x}} \times n _{\mathrm{u}}}$ is the input matrix.
